@@ -1,5 +1,16 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import '../styles/global.css';
 
+const paseTitle = "小贵子のblog";
+const skills = [
+	"番剧",
+	"游戏",
+	"其他"
+]
+let happy = true;
+
+const skillColor = "navy";
 ---
 
 <html lang="cn">
@@ -9,17 +20,32 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{paseTitle}</title>
+		<style define:vars={{skillColor}}>
+      		h1 {
+        		color: rgb(241, 134, 241);
+        		font-size: 3rem;
+			}
+			.skill {
+    			color: var(--skillColor);
+    			font-weight: bold;
+			}
+    	</style>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+		<Navigation />
 
-		<h1>小贵子のblog</h1>
-        <h1>网站相关：</h1>
+		<h1>{paseTitle}</h1>
+        <h2>网站相关：</h2>
         <h2>小贵子的小窝，欢迎到访</h2>
-        <h2>tech otackus save the world</h2>
+        <h4>tech otackus save the world</h4>
+
+		{happy && <p>Ciallo～(∠·ω&lt; )⌒★</p>}
+
+		<p>个人爱好：</p>
+		<ul>
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
+		</ul>
 
         <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
         <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
