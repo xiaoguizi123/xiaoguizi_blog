@@ -1,0 +1,29 @@
+---
+// 引用头尾样式
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+// 引用全局css
+import '../styles/global.css';
+const { pageTitle } = Astro.props;
+---
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 网站小图标类型和位置 -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- 浏览器窗口适配 -->
+    <meta name="viewport" content="width=device-width" />
+    <!-- 生成器标识 -->
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <h2>{pageTitle}</h2>
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
+  </body>
+</html>

@@ -1,8 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-const paseTitle = "小贵子のblog";
+const pageTitle = "小贵子のblog";
 const skills = [
 	"番剧",
 	"游戏",
@@ -12,42 +11,20 @@ let happy = true;
 
 const skillColor = "navy";
 ---
+<BaseLayout pageTitle={pageTitle}>
+<h1>{pageTitle}</h1>
+    <h2>网站相关：</h2>
+    <h2>小贵子的小窝，欢迎到访</h2>
+    <h4>tech otackus save the world</h4>
 
-<html lang="cn">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{paseTitle}</title>
-		<style define:vars={{skillColor}}>
-      		h1 {
-        		color: rgb(241, 134, 241);
-        		font-size: 3rem;
-			}
-			.skill {
-    			color: var(--skillColor);
-    			font-weight: bold;
-			}
-    	</style>
-	</head>
-	<body>
-		<Navigation />
+	{happy && <p>Ciallo～(∠·ω&lt; )⌒★</p>}
 
-		<h1>{paseTitle}</h1>
-        <h2>网站相关：</h2>
-        <h2>小贵子的小窝，欢迎到访</h2>
-        <h4>tech otackus save the world</h4>
+	<p>个人爱好：</p>
+	<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+	</ul>
 
-		{happy && <p>Ciallo～(∠·ω&lt; )⌒★</p>}
+    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
-		<p>个人爱好：</p>
-		<ul>
-			{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
-
-        <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-	</body>
-</html>
+</BaseLayout>
